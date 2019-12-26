@@ -43,10 +43,15 @@ public class ProductCode {
      * @param set {@link ResultSet}, полученный в результате запроса, 
      * содержащего все поля таблицы PRODUCT_CODE базы данных Sample.
      */
-    private ProductCode(ResultSet set) {
+    private ProductCode(ResultSet set) throws SQLException {
         /*
          * TODO #05 реализуйте конструктор класса ProductCode
          */
+        this.code = set.getString("prod_code");
+        this.discountCode = set.getString("discount_code").charAt(0);
+        //((Character) myChar).toString();
+        
+                
         throw new UnsupportedOperationException("Not implemented yet!");        
     }
     /**
@@ -203,6 +208,7 @@ public class ProductCode {
         /*
          * TODO #13 Реализуйте метод convert
          */
+        PreparedStatement ps = connection.prepareStatement("inser")
         throw new UnsupportedOperationException("Not implemented yet!");
     }
     /**
