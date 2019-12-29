@@ -62,8 +62,11 @@ public class Main {
         /*
          * TODO #02 Реализуйте метод getUrl
          */
-        Properties props = getProperties();
-        return props.getProperty("connection");
+        Properties properties = getProperties();
+        return properties.getProperty("database.driver") + "://" +
+                properties.getProperty("database.host") + ":" +
+                properties.getProperty("database.port") + "/" +
+                properties.getProperty("database.name");
     }
     /**
      * Возвращает параметры соединения
@@ -75,11 +78,11 @@ public class Main {
         /*
          * TODO #03 Реализуйте метод getProperties
          */
-        InputStream stream = ClassLoader.getSystemResourceAsStream("Resources/application.properties");
-        Properties result = new Properties();
-        result.load(stream);
-        return result;
-        
+        Properties properties = new Properties();
+        try (InputStream stream = ClassLoader.getSystemResourceAsStream("Resources/application.properties")) {
+            properties.load(stream);
+            return properties;
+        }
         //throw new UnsupportedOperationException("Not implemented yet!");
     }
     /**
@@ -94,4 +97,6 @@ public class Main {
          */
         return DriverManager.getConnection(getUrl(), getProperties());
     }
+
+
 }
