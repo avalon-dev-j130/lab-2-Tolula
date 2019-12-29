@@ -28,6 +28,7 @@ public class Main {
          * TODO #01 Подключите к проекту все библиотеки, необходимые для соединения с СУБД.
          */
         try (Connection connection = getConnection()) {
+
             ProductCode code = new ProductCode("MO", 'N', "Movies");
             code.save(connection);
             printAllCodes(connection);
@@ -64,8 +65,6 @@ public class Main {
         Properties props = getProperties();
         return props.getProperty("connection");
     }
-    
-    
     /**
      * Возвращает параметры соединения
      * 
@@ -76,7 +75,7 @@ public class Main {
         /*
          * TODO #03 Реализуйте метод getProperties
          */
-        InputStream stream = ClassLoader.getSystemResourceAsStream("application.properties");
+        InputStream stream = ClassLoader.getSystemResourceAsStream("Resources/application.properties");
         Properties result = new Properties();
         result.load(stream);
         return result;
@@ -95,5 +94,4 @@ public class Main {
          */
         return DriverManager.getConnection(getUrl(), getProperties());
     }
-    
 }

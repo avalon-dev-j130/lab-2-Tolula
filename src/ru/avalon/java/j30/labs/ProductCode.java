@@ -208,7 +208,7 @@ public class ProductCode {
         /*
          * TODO #13 Реализуйте метод convert
          */
-        PreparedStatement ps = connection.prepareStatement("inser")
+        //PreparedStatement ps = connection.prepareStatement("inser")
         throw new UnsupportedOperationException("Not implemented yet!");
     }
     /**
