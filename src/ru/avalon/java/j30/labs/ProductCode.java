@@ -47,12 +47,13 @@ public class ProductCode {
         /*
          * TODO #05 реализуйте конструктор класса ProductCode
          */
+
         this.code = set.getString("prod_code");
         this.discountCode = set.getString("discount_code").charAt(0);
+        this.description = set.getString("description");
         //((Character) myChar).toString();
-        
-                
-        throw new UnsupportedOperationException("Not implemented yet!");        
+
+        //throw new UnsupportedOperationException("Not implemented yet!");
     }
     /**
      * Возвращает код товара
@@ -206,10 +207,17 @@ public class ProductCode {
      */
     public void save(Connection connection) throws SQLException {
         /*
-         * TODO #13 Реализуйте метод convert
+         * TODO #13 Реализуйте метод save
          */
-        //PreparedStatement ps = connection.prepareStatement("inser")
-        throw new UnsupportedOperationException("Not implemented yet!");
+
+        String createString = "INSERT INTO PRODUCT_CODE (PROD_CODE, DISCOUNT_CODE, DESCRIPTION) VALUES (?,?,?)";
+        PreparedStatement ps = connection.prepareStatement(createString);
+        ps.setString(1, this.code);
+        ps.setString(2, String.valueOf(this.discountCode));
+        ps.setString(3, this.description);
+        ps.executeUpdate();
+        connection.commit();
+        //throw new UnsupportedOperationException("Not implemented yet!");
     }
     /**
      * Возвращает все записи таблицы PRODUCT_CODE в виде коллекции объектов
