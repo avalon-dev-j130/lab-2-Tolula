@@ -2,10 +2,13 @@ package ru.avalon.java.j30.labs;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Collection;
 import java.util.Properties;
 import java.io.*;
+
+import static ru.avalon.java.j30.labs.ProductCode.getSelectQuery;
 
 /**
  * Лабораторная работа №3
@@ -28,11 +31,9 @@ public class Main {
          * TODO #01 Подключите к проекту все библиотеки, необходимые для соединения с СУБД.
          */
         try (Connection connection = getConnection()) {
-
             ProductCode code = new ProductCode("MO", 'N', "Movies");
             code.save(connection);
             printAllCodes(connection);
-
             code.setCode("MV");
             code.save(connection);
             printAllCodes(connection);
