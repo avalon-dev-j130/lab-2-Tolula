@@ -216,10 +216,7 @@ public class ProductCode {
          */
         Collection<ProductCode> productCodes = new LinkedList<>();
         while (set.next()) {
-            String code = set.getString("prod_code");
-            char discountCode = set.getString("discount_code").charAt(0);
-            String description = set.getString("description");
-            ProductCode obj = new ProductCode(code, discountCode, description);
+            ProductCode obj = new ProductCode(set);
             productCodes.add(obj);
         }
         return productCodes;
