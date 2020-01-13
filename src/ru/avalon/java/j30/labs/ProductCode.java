@@ -50,9 +50,13 @@ public class ProductCode {
         /*
          * TODO #05 реализуйте конструктор класса ProductCode
          */
-        this.code = set.getString("prod_code");
-        this.discountCode = set.getString("discount_code").charAt(0);
-        this.description = set.getString("description");
+        this(set.getString("prod_code"),
+            set.getString("discount_code").charAt(0),
+            set.getString("description"));
+       // Еще одна реализация:
+       //this.code = set.getString("prod_code");
+       // this.discountCode = set.getString("discount_code").charAt(0);
+       // this.description = set.getString("description");
         //throw new UnsupportedOperationException("Not implemented yet!");
     }
     /**
